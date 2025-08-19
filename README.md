@@ -4,8 +4,8 @@ This project demonstrates how I deployed my personal 3D portfolio (built using T
 
 ## Live Demo
 
-http://<your-ec2-public-ip>  
-http://<your-public-dns>  
+34.229.47.186
+ec2-34-229-47-186.compute-1.amazonaws.com
 
 *(Note: The demo may be unavailable if the instance is stopped or IP changes. An Elastic IP can be attached to make it permanent.)*
 
