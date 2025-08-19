@@ -1,0 +1,36 @@
+# Step 1: Update server packages
+sudo yum update -y
+
+# Step 2: Install NGINX
+sudo amazon-linux-extras install nginx1 -y
+
+# Step 3: Start NGINX
+sudo systemctl start nginx
+
+# Step 4: Enable NGINX to start on reboot
+sudo systemctl enable nginx
+
+# Step 5: Upload build folder from local machine to EC2
+scp -i portfolio-key.pem /path/to/portfolio.zip ec2-user@<your-ec2-ip>:/home/ec2-user
+
+# Step 6: SSH into EC2 instance
+ssh -i portfolio-key.pem ec2-user@<your-ec2-ip>
+
+# Step 7: Unzip the portfolio files
+unzip portfolio.zip
+
+# Step 8: Remove default NGINX files
+sudo rm -rf /usr/share/nginx/html/*
+
+# Step 9: Copy build files into NGINX web root
+sudo cp -r dist/* /usr/share/nginx/html/
+
+# Step 10: Test locally from EC2
+curl -I http://localhost
+
+# Step 11: Verify site in browser using public IP or DNS
+http://<your-ec2-ip>
+http://<your-public-dns>
+
+# Step 12: Configure CloudWatch auto-recovery alarm
+# (done through AWS Console: EC2 > Actions > Monitor and troubleshoot > Manage CloudWatch alarms)
