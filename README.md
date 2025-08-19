@@ -4,23 +4,25 @@ This project demonstrates how I deployed my personal 3D portfolio (built using T
 
 ## Live Demo
 
-34.229.47.186
-ec2-34-229-47-186.compute-1.amazonaws.com
 
-*(Note: The demo may be unavailable if the instance is stopped or IP changes. An Elastic IP can be attached to make it permanent.)*
+[http://ec2-34-229-47-186.compute-1.amazonaws.com](http://ec2-34-229-47-186.compute-1.amazonaws.com)
 
 ---
 
 ## Architecture Overview
 
+```text
 [Browser]
-|
-v
-[EC2 Public IP / DNS] --> [NGINX Web Server] --> [Portfolio Files in /usr/share/nginx/html]
-|
-+--> CloudWatch Monitoring + Auto-Recovery
+   |
+   v
+[EC2 Public IP or DNS]
+   |
+   v
+[NGINX Web Server] --> /usr/share/nginx/html (3D portfolio files)
+   |
+   +--> CloudWatch (System Status + Auto-Recovery)
 
-
+```
 ---
 
 ## AWS Services Used
